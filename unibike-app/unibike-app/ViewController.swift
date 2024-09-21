@@ -44,43 +44,51 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func setupLocationServices() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            
-            // Request location authorization
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // Request location authorization
+        if CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
-            
-            // Check if location services are enabled
-            if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
         } else {
-            print("Location services are not enabled")
+            // Prompt the user to enable location services in settings
+            let alert = UIAlertController(title: "Location Services Disabled", message: "Please enable location services in Settings to use this feature.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true, completion: nil)
         }
     }
-    
-    // Update user location and center the map on it (only the first time)
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            if let location = locations.first, !hasCenteredOnUser {
-                let userLocation = location.coordinate
-                let region = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
-                mapView.setRegion(region, animated: true)
-                hasCenteredOnUser = true // Ensure the map only centers once on the user location
-            }
-        }
 
-        // Handle authorization changes
-        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-            switch status {
-            case .authorizedWhenInUse, .authorizedAlways:
-                locationManager.startUpdatingLocation()
-            case .denied, .restricted:
-                print("Location access denied or restricted.")
-            case .notDetermined:
-                locationManager.requestWhenInUseAuthorization()
-            @unknown default:
-                break
-            }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else {
+            print("User location is nil")
+            return
         }
+        
+        if !hasCenteredOnUser {
+            let userLocation = location.coordinate
+            let region = MKCoordinateRegion(center: userLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(region, animated: true)
+            hasCenteredOnUser = true
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.startUpdatingLocation()
+        case .denied, .restricted:
+            // Show an alert when location is denied
+            let alert = UIAlertController(title: "Location Access Denied", message: "Please enable location permissions in Settings.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true, completion: nil)
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        @unknown default:
+            break
+        }
+    }
+
         
         // Handle errors
         func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -100,29 +108,29 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             }
         }
         
-        // Customize annotations with an SF Symbol (bicycle icon)
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            
-            // Check if it's the user location, if so, use the default blue dot
-            if annotation is MKUserLocation {
-                return nil
-            }
-            
-            let identifier = "StationAnnotation"
-            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            
-            if annotationView == nil {
-                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView?.canShowCallout = true // Show the callout with station name and bike count
-                
-                // Use SF Symbol for bicycle icon
-                let bikeIcon = UIImage(systemName: "bicycle.circle.fill") // SF Symbol for bicycle
-                annotationView?.image = bikeIcon
-            } else {
-                annotationView?.annotation = annotation
-            }
-            
-            return annotationView
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil // Use default blue dot for user location
         }
+        
+        let identifier = "StationAnnotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+            
+            // SF Symbol for bicycle
+            let bikeIcon = UIImage(systemName: "bicycle.circle.fill")
+            annotationView?.image = bikeIcon
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
+    }
+
+    
+    
     }
 

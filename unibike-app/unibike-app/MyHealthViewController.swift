@@ -22,7 +22,7 @@ class MyHealthViewController: UIViewController {
     var activeEnergyUnit = HKUnit.kilocalorie()
     var duration: TimeInterval = 0
     var userWeight: Double = 70.0 // Default
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()

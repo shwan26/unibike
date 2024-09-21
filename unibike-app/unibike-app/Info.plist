@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;We need your location to provide nearby stations at all times.&quot;</string>
+	<string>&quot;We need your location to show nearby bike stations.&quot;</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>&quot;We need to access your location to provide real-time bike information.&quot;</string>
 	<key>NSHealthShareUsageDescription</key>
