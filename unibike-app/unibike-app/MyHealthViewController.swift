@@ -21,10 +21,12 @@ class MyHealthViewController: UIViewController {
     var workoutStartDate: Date?
     var activeEnergyUnit = HKUnit.kilocalorie()
     var duration: TimeInterval = 0
+    var userWeight: Double = 70.0 // Default
 
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()
+        fetchUserWeight()
         updateUI()
     }
 
@@ -44,7 +46,7 @@ class MyHealthViewController: UIViewController {
         } else {
             startStopButton.setTitle("Start Today", for: .normal)
         }
-        calorieBurnLabel.text = "\(Int(calorieBurned)) cal"
+        calorieBurnLabel.text = "\(Int(calorieBurned)) kcal"
         durationLabel.text = formatTime(duration)
     }
 
@@ -70,8 +72,15 @@ class MyHealthViewController: UIViewController {
         if let start = workoutStartDate {
             duration = Date().timeIntervalSince(start)
         }
-        calorieBurned += 0.1 // Simulate calorie burn per second
+        calculateCaloriesBurned() // Simulate calorie burn per second
         updateUI()
+    }
+    
+    // Calculate calories burned based on user's weight and time spent cycling
+    private func calculateCaloriesBurned() {
+        let caloriesPerSecondPerKg = 0.0023 // Moderate cycling: kcal burned per kg per second
+        let seconds = duration // Duration is in seconds
+        calorieBurned = userWeight * caloriesPerSecondPerKg * seconds
     }
 
     private func requestHealthKitAuthorization() {
@@ -83,6 +92,23 @@ class MyHealthViewController: UIViewController {
                 print("Authorization failed: \(String(describing: error?.localizedDescription))")
             }
         }
+    }
+    
+    // Fetch the user's weight from HealthKit
+    private func fetchUserWeight() {
+           guard let weightType = HKSampleType.quantityType(forIdentifier: .bodyMass) else { return }
+           
+           let query = HKSampleQuery(sampleType: weightType, predicate: nil, limit: 1, sortDescriptors: [NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)]) { (query, results, error) in
+               if let result = results?.first as? HKQuantitySample {
+                   let weightInKg = result.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
+                   self.userWeight = weightInKg
+                   print("User weight: \(weightInKg) kg")
+               } else {
+                   print("No weight data available or error: \(String(describing: error))")
+               }
+           }
+           
+           healthStore.execute(query)
     }
 
     private func saveCyclingWorkout() {
