@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Viewpoint ABAC",
+    "latitude": 13.60865,
+    "longitude": 100.84683,
+    "bike": 10
+  },
+  {
+    "name": "King David",
+    "latitude": 13.61307,
+    "longitude": 100.83221,
+    "bike": 5
+  },
+  {
+    "name": "ABAC Aquatic Center",
+    "latitude": 13.61499,
+    "longitude": 100.83326,
+    "bike": 20
+  },
+  {
+    "name": "Cathedral Learning",
+    "latitude": 13.612,
+    "longitude": 100.83783,
+    "bike": 10
+  },
+  {
+    "name": "Parazo 1",
+    "latitude": 13.6119,
+    "longitude": 100.84184,
+    "bike": 11
+  },
+  {
+    "name": "Parazo 2",
+    "latitude": 13.6142,
+    "longitude": 100.84583,
+    "bike": 9
+  }
+]
+

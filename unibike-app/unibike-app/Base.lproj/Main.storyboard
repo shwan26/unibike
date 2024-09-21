@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zbQ-7j-IaV">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Health-->
+        <scene sceneID="O1p-AG-v4q">
+            <objects>
+                <viewController id="ESE-Qf-TbU" customClass="MyHealthViewController" customModule="unibike_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AMT-qD-4rv">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Health" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBV-LV-Oia">
+                                <rect key="frame" x="29.999999999999993" y="79" width="118.33333333333331" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Oql-sm-YiT">
+                                <rect key="frame" x="30.000000000000014" y="129" width="246.33333333333337" height="48.666666666666657"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="xQ4-oo-azS">
+                                        <rect key="frame" x="0.0" y="0.0" width="246.33333333333334" height="20.333333333333332"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories Burn Today: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xe8-3J-1qH">
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mz0-oh-1HF">
+                                                <rect key="frame" x="205" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="131" translatesAutoresizingMaskIntoConstraints="NO" id="VIG-Mt-MtF">
+                                        <rect key="frame" x="0.0" y="28.333333333333343" width="246.33333333333334" height="20.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inq-Hr-LQh">
+                                                <rect key="frame" x="0.0" y="0.0" width="74" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJe-PY-RYL">
+                                                <rect key="frame" x="205" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDl-Pa-BT7">
+                                <rect key="frame" x="146.66666666666666" y="347.66666666666669" width="99.666666666666657" height="34.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Start Now"/>
+                                <connections>
+                                    <action selector="startStopButtonTapped" destination="ESE-Qf-TbU" eventType="touchUpInside" id="Ggl-f3-3zm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ng9-gU-mNp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Oql-sm-YiT" firstAttribute="leading" secondItem="Ng9-gU-mNp" secondAttribute="leading" constant="30" id="6K8-cg-OfD"/>
+                            <constraint firstItem="ZBV-LV-Oia" firstAttribute="leading" secondItem="Ng9-gU-mNp" secondAttribute="leading" constant="30" id="CqL-u7-Vkt"/>
+                            <constraint firstItem="ZBV-LV-Oia" firstAttribute="top" secondItem="Ng9-gU-mNp" secondAttribute="top" constant="20" id="OWY-qm-8Wk"/>
+                            <constraint firstItem="NDl-Pa-BT7" firstAttribute="top" secondItem="Oql-sm-YiT" secondAttribute="bottom" constant="170" id="bQU-py-qjZ"/>
+                            <constraint firstItem="NDl-Pa-BT7" firstAttribute="centerX" secondItem="Ng9-gU-mNp" secondAttribute="centerX" id="mOC-WU-tep"/>
+                            <constraint firstItem="Oql-sm-YiT" firstAttribute="top" secondItem="ZBV-LV-Oia" secondAttribute="bottom" constant="20" id="toD-X9-ijC"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My Health" image="figure.track.and.field" catalog="system" id="Ttc-9v-lhg"/>
+                    <connections>
+                        <outlet property="calorieBurnLabel" destination="Mz0-oh-1HF" id="jCT-6E-Swd"/>
+                        <outlet property="durationLabel" destination="zJe-PY-RYL" id="mEe-ub-Qdk"/>
+                        <outlet property="startStopButton" destination="NDl-Pa-BT7" id="fZX-TT-eca"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fD-ka-W7k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-712.2137404580152" y="160.56338028169014"/>
+        </scene>
+        <!--Stations-->
+        <scene sceneID="oUc-6p-z1s">
+            <objects>
+                <viewController id="ADP-Ok-jRG" customClass="ViewController" customModule="unibike_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qqR-a5-UeO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Stations" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGN-kR-RDD">
+                                <rect key="frame" x="30" y="69" width="255" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tt-Hm-ZmZ">
+                                <rect key="frame" x="0.0" y="109" width="393" height="660"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZVW-K4-ull"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4tt-Hm-ZmZ" firstAttribute="leading" secondItem="ZVW-K4-ull" secondAttribute="leading" id="1VC-V8-zKL"/>
+                            <constraint firstItem="GGN-kR-RDD" firstAttribute="leading" secondItem="ZVW-K4-ull" secondAttribute="leading" constant="30" id="DXc-m1-Flk"/>
+                            <constraint firstItem="4tt-Hm-ZmZ" firstAttribute="top" secondItem="GGN-kR-RDD" secondAttribute="bottom" constant="10" id="Eq2-Fl-n5p"/>
+                            <constraint firstItem="ZVW-K4-ull" firstAttribute="trailing" secondItem="GGN-kR-RDD" secondAttribute="trailing" constant="108" id="JUu-0D-r5L"/>
+                            <constraint firstItem="ZVW-K4-ull" firstAttribute="bottom" secondItem="4tt-Hm-ZmZ" secondAttribute="bottom" id="Ngq-Ld-mcu"/>
+                            <constraint firstItem="GGN-kR-RDD" firstAttribute="top" secondItem="ZVW-K4-ull" secondAttribute="top" constant="10" id="XN2-hr-Y5d"/>
+                            <constraint firstItem="ZVW-K4-ull" firstAttribute="trailing" secondItem="4tt-Hm-ZmZ" secondAttribute="trailing" id="ljT-st-ocR"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Stations" image="map" catalog="system" id="I4M-fb-JLI"/>
+                    <connections>
+                        <outlet property="mapView" destination="4tt-Hm-ZmZ" id="Cfm-Vy-z4A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="frZ-Lh-Cg0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-712.2137404580152" y="-554.22535211267609"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="T00-QL-4Ac">
+            <objects>
+                <tabBarController id="zbQ-7j-IaV" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q7e-ec-wAs">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ADP-Ok-jRG" kind="relationship" relationship="viewControllers" id="UiI-JY-rZy"/>
+                        <segue destination="ESE-Qf-TbU" kind="relationship" relationship="viewControllers" id="e9X-CB-JXO"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="prD-hm-YQA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1616" y="-250"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="unibike_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="473" y="-423"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="figure.track.and.field" catalog="system" width="115" height="128"/>
+        <image name="map" catalog="system" width="128" height="112"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
