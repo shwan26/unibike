@@ -254,8 +254,10 @@ class BikeRentingViewController: UIViewController {
             return 35.0 // 1 hour or more
         } else if minutes >= 30 {
             return 20.0 // 30 minutes or more but less than 1 hour
+        } else if minutes <= 1 {
+            return 5.0
         } else {
-            return 5.0  // Less than 30 minutes
+            return 5.0 * Double(minutes) // Less than 30 minutes
         }
     }
 
