@@ -13,9 +13,9 @@ class RidingHistoryViewController: UIViewController, UITableViewDelegate, UITabl
 
     // Updated riding history data structure
         let ridingHistoryData: [(image: UIImage, title: String, detail: String, cost: String)] = [
-            (UIImage(named: "history1")!, "Ride to Campus", "Rode from Station A to Campus", "30 Baht"),
-            (UIImage(named: "history2")!, "Ride to Mall", "Rode from Station B to Mall", "40 Baht"),
-            (UIImage(named: "history3")!, "Ride Home", "Rode from Campus to Home", "25 Baht")
+            (UIImage(named: "history1")!, "Ride to Condo", "Rode from MSME to Groovy", "15 Baht"),
+            (UIImage(named: "history2")!, "Ride to Mall", "Rode from View Point to CJ mall", "10 Baht"),
+            (UIImage(named: "history3")!, "Ride to Campus", "Rode from Interview to AU Mall", "20 Baht")
         ]
 
         override func viewDidLoad() {
