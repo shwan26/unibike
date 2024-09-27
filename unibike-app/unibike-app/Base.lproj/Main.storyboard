@@ -492,7 +492,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkD-MT-p0d">
-                                <rect key="frame" x="30" y="103" width="59" height="30"/>
+                                <rect key="frame" x="20" y="103" width="69" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" red="0.2901961207" green="0.63921570780000003" blue="0.74509805439999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -508,7 +508,7 @@
                             <constraint firstItem="63D-ui-zyK" firstAttribute="top" secondItem="iso-ub-T5T" secondAttribute="top" constant="140" id="1xt-xd-c44"/>
                             <constraint firstItem="AI5-AY-SyZ" firstAttribute="leading" secondItem="63D-ui-zyK" secondAttribute="trailing" constant="20" id="7EW-rx-qTw"/>
                             <constraint firstItem="dbk-rd-kxE" firstAttribute="bottom" secondItem="YPc-Dv-BGY" secondAttribute="bottom" constant="5" id="Bde-6U-Ntm"/>
-                            <constraint firstItem="wkD-MT-p0d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iso-ub-T5T" secondAttribute="leading" constant="20" symbolic="YES" id="KAu-tL-c9g"/>
+                            <constraint firstItem="wkD-MT-p0d" firstAttribute="leading" secondItem="iso-ub-T5T" secondAttribute="leading" constant="20" symbolic="YES" id="KAu-tL-c9g"/>
                             <constraint firstItem="63D-ui-zyK" firstAttribute="top" secondItem="AI5-AY-SyZ" secondAttribute="top" id="Kit-2m-GR7"/>
                             <constraint firstItem="YPc-Dv-BGY" firstAttribute="top" secondItem="63D-ui-zyK" secondAttribute="bottom" constant="5" id="SDS-d8-UaS"/>
                             <constraint firstItem="dbk-rd-kxE" firstAttribute="trailing" secondItem="wkD-MT-p0d" secondAttribute="trailing" constant="304" id="WZf-ao-kav"/>
