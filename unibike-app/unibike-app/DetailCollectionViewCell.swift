@@ -1,23 +1,3 @@
-//
-//  DetailCollectionViewCell.swift
-//  unibike-app
-//
-//  Created by Naw Tulip on 27/9/2567 BE.
-//
-
-import UIKit
-
-class DetailCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Additional customization if needed
-        imageView.layer.cornerRadius = 8
-        imageView.clipsToBounds = true
-        titleLabel.textColor = .white
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-    }
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:90971b91ce98ea088c2170f3c29c25354419e8e7020347ef4d540ce4a7fbb1b5
+size 561
