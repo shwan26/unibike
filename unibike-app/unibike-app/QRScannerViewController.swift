@@ -16,12 +16,30 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
     @IBOutlet weak var submitButton: UIButton!
     
     var captureSession: AVCaptureSession!
-    var previewLayer: AVCaptureVideoPreviewLayer!
+        var previewLayer: AVCaptureVideoPreviewLayer!
 
-    override func viewDidLoad() {
+        override func viewDidLoad() {
             super.viewDidLoad()
+            setupCamera()
+        }
 
-            // Initialize Capture Session
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            // Restart capture session when the view appears
+            if captureSession?.isRunning == false {
+                captureSession.startRunning()
+            }
+        }
+
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            // Stop capture session when the view disappears
+            if captureSession?.isRunning == true {
+                captureSession.stopRunning()
+            }
+        }
+
+        func setupCamera() {
             captureSession = AVCaptureSession()
             guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
                 failed()
@@ -54,13 +72,11 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
                 return
             }
 
-            // Set up preview layer
             previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             previewLayer.frame = cameraView.layer.bounds
             previewLayer.videoGravity = .resizeAspectFill
             cameraView.layer.addSublayer(previewLayer)
 
-            // Start the session
             captureSession.startRunning()
         }
 
@@ -90,15 +106,6 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
             }
         }
 
-        // Stop session when leaving the screen
-        override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-
-//            if captureSession.isRunning {
-//                captureSession.stopRunning()
-//            }
-        }
-
         // Function to handle scanned bike ID
         func bikeScanned(bikeId: String) {
             print("Bike ID Scanned: \(bikeId)")
@@ -116,7 +123,7 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
         }
 
         // Present the image picker
-        func presentImagePicker() {
+        @IBAction func presentImagePicker() {
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
@@ -126,7 +133,7 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
         }
 
         // Handle the picked image
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             picker.dismiss(animated: true, completion: nil)
             
             if let image = info[.originalImage] as? UIImage {
@@ -152,17 +159,16 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
             }
         }
 
-    @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             picker.dismiss(animated: true, completion: nil)
         }
 
         // Pass the bike ID to the next ViewController
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "startRentingBike" {
-            if let nextVC = segue.destination as? BikeRentingViewController, let bikeId = sender as? String {
-                nextVC.bikeId = bikeId
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "startRentingBike" {
+                if let nextVC = segue.destination as? BikeRentingViewController, let bikeId = sender as? String {
+                    nextVC.bikeId = bikeId
+                }
             }
         }
-    }
-
     }

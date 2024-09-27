@@ -79,10 +79,10 @@ class BikeRentingViewController: UIViewController {
         isLocked.toggle()
         if isLocked {
             lockButton.setTitle("Unlock", for: .normal)
-            lockButton.backgroundColor = .green
+            lockButton.tintColor = .green
         } else {
             lockButton.setTitle("Lock", for: .normal)
-            lockButton.backgroundColor = .red
+            lockButton.tintColor = .red
         }
     }
 
