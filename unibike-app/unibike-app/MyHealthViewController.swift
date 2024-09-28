@@ -46,7 +46,7 @@ class MyHealthViewController: UIViewController {
         } else {
             startStopButton.setTitle("Start Today", for: .normal)
         }
-        calorieBurnLabel.text = "\(Int(calorieBurned)) kcal"
+        calorieBurnLabel.text = String(format: "%.2f kcal", calorieBurned)
         durationLabel.text = formatTime(duration)
     }
 

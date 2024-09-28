@@ -5,13 +5,13 @@
 	<key>UILauchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&quot;We need your location to show nearby bike stations.&quot;</string>
+	<string>We need your location to show nearby bike stations.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>&quot;We need to access your location to provide real-time bike information.&quot;</string>
+	<string>We need to access your location to provide real-time bike information.</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>&quot;We need your health to provide real-time bike information.&quot;</string>
+	<string>We need your health to provide real-time bike information.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>&quot;We need to update your health to provide real-time bike information.&quot;</string>
+	<string>We need to update your health to provide real-time bike information.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -94,6 +94,16 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
             present(alert, animated: true)
             captureSession = nil
         }
+    
+        func restartCaptureSession() {
+            if captureSession == nil {
+                setupCamera()  // Reinitialize the camera if needed
+            } else if !captureSession.isRunning {
+                captureSession.startRunning()
+            }
+            presentImagePicker()
+        }
+
 
         // QR Code detection
         func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
@@ -111,16 +121,37 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
             print("Bike ID Scanned: \(bikeId)")
             performSegue(withIdentifier: "startRentingBike", sender: bikeId)
         }
+    
+    
 
         // Manual input submit action
         @IBAction func submitBikeId(_ sender: UIButton) {
             if let bikeId = bikeIdTextField?.text, !bikeId.isEmpty {
-                print("Bike ID entered: \(bikeId)")
-                performSegue(withIdentifier: "startRentingBike", sender: bikeId)
-            } else {
-                print("No bike ID entered. Continuing the flow...")
+                    print("Bike ID entered: \(bikeId)")
+                    
+                    // Ensure capture session is stopped to prevent any accidental QR code scan
+//            
+//                    captureSession.stopRunning()
+                    
+                    // Check if there's an active segue, if not, perform segue
+                    if self.shouldPerformSegue(withIdentifier: "startRentingBike", sender: self) {
+                        performSegue(withIdentifier: "startRentingBike", sender: bikeId)
+                    }
+                } else {
+                    print("No bike ID entered. Continuing the flow...")
+                }
             }
-        }
+
+            // Add this method to control segue
+            override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+                if identifier == "startRentingBike" {
+                    // Return false if the segue was already initiated to prevent duplicates
+                    if let presentedVC = presentedViewController as? BikeRentingViewController {
+                        return false
+                    }
+                }
+                return true
+            }
 
         // Present the image picker
         @IBAction func presentImagePicker() {
